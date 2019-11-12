@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `<app-sub *ngIf="hide"></app-sub>`
 })
 export class AppComponent {
-  title = 'ng8';
+  hide = false;
+
+  constructor() {
+    setInterval(() => this.hide = !this.hide, 50);
+  }
 }
