@@ -56,10 +56,11 @@ export class SubComponent implements OnDestroy {
     // no leak
     // this.dummyService.behavior$.pipe(tap(() => this.rand2 = 44), publishLast(), takeUntil(this.destroy$)).subscribe(() => this.rand2 = 33);
 
+    // no leak
     // this.dummyService.behavior$.pipe(tap(() => this.rand2 = 44), publishReplay(), takeUntil(this.destroy$)).subscribe(() => this.rand2 = 33);
 
     // (!) large leak - the subscription from the shareReplay operator to the source is never unsubscribed, thus the component stays in the heap
-    // this.dummyService.behavior$.pipe(tap(() => this.rand2 = 44), shareReplay(1), takeUntil(this.destroy$)).subscribe(() => this.rand2 = 33);
+    this.dummyService.behavior$.pipe(tap(() => this.rand2 = 44), shareReplay(1), takeUntil(this.destroy$)).subscribe(() => this.rand2 = 33);
     // FIXED
     // this.dummyService.behavior$.pipe(tap(() => this.rand2 = 44), shareReplay({bufferSize: 1, refCount: true})).subscribe(() => this.rand2 = 33);
 
