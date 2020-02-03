@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { DummyService } from './dummy.service';
-import { publish, publishBehavior, publishLast, publishReplay, shareReplay, tap } from 'rxjs/operators';
+import { publish, publishBehavior, publishLast, publishReplay, shareReplay, tap, takeUntil } from 'rxjs/operators';
 
 
 @Component({
